@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #0e1418;
+  --stone: #d8d2c8;
+  --paper: #ece7de;
+  --copper: #3d7a6a;
+  --gold: #c4a574;
+  --caption: #8a9196;
+  --rule: color-mix(in srgb, var(--stone) 22%, transparent);
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-stone: var(--stone);
+  --color-paper: var(--paper);
+  --color-copper: var(--copper);
+  --color-gold: var(--gold);
+  --color-caption: var(--caption);
+  --color-rule: var(--rule);
+  --font-display: var(--font-commissioner), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), ui-monospace, monospace;
+}
+
+html {
+  background: var(--ink);
+  color: var(--stone);
+}
+
+body {
+  min-height: 100%;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--copper) 7%, transparent), transparent 28rem),
+    var(--ink);
+  color: var(--stone);
+  font-family: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--copper) 45%, transparent);
+  color: var(--paper);
+}
+
+a {
+  text-underline-offset: 0.18em;
+}
+
+:focus-visible {
+  outline: 1px solid var(--gold);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
