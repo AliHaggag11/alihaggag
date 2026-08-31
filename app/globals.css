@@ -1,13 +1,31 @@
 @import "tailwindcss";
 
 :root {
-  --ink: #0e1418;
-  --stone: #d8d2c8;
-  --paper: #ece7de;
-  --copper: #3d7a6a;
-  --gold: #c4a574;
-  --caption: #8a9196;
-  --rule: color-mix(in srgb, var(--stone) 22%, transparent);
+  --ink: #f8f6f3;
+  --stone: #3d4248;
+  --paper: #1a1e22;
+  --copper: #2d6355;
+  --gold: #9a7b4a;
+  --caption: #6b7075;
+  --rule: color-mix(in srgb, var(--stone) 18%, transparent);
+  --surface: #f8f6f3;
+  --surface-gradient: color-mix(in srgb, var(--copper) 5%, transparent);
+  --header-bg: rgba(248, 246, 243, 0.85);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #0e1418;
+    --stone: #d8d2c8;
+    --paper: #ece7de;
+    --copper: #3d7a6a;
+    --gold: #c4a574;
+    --caption: #8a9196;
+    --rule: color-mix(in srgb, var(--stone) 22%, transparent);
+    --surface: #0e1418;
+    --surface-gradient: color-mix(in srgb, var(--copper) 7%, transparent);
+    --header-bg: rgba(14, 20, 24, 0.8);
+  }
 }
 
 @theme inline {
@@ -18,21 +36,23 @@
   --color-gold: var(--gold);
   --color-caption: var(--caption);
   --color-rule: var(--rule);
+  --color-surface: var(--surface);
+  --color-header-bg: var(--header-bg);
   --font-display: var(--font-commissioner), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-ibm-plex-mono), ui-monospace, monospace;
 }
 
 html {
-  background: var(--ink);
+  background: var(--surface);
   color: var(--stone);
 }
 
 body {
   min-height: 100%;
   background:
-    linear-gradient(180deg, color-mix(in srgb, var(--copper) 7%, transparent), transparent 28rem),
-    var(--ink);
+    linear-gradient(180deg, var(--surface-gradient), transparent 28rem),
+    var(--surface);
   color: var(--stone);
   font-family: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
 }
@@ -40,6 +60,12 @@ body {
 ::selection {
   background: color-mix(in srgb, var(--copper) 45%, transparent);
   color: var(--paper);
+}
+
+@media (prefers-color-scheme: light) {
+  ::selection {
+    color: var(--ink);
+  }
 }
 
 a {
