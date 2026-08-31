@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Commissioner, IBM_Plex_Mono, Source_Sans_3 } from "next/font/google";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { CommandPaletteProvider } from "@/components/command-palette";
 import { site } from "@/content/site";
 import "./globals.css";
 
@@ -67,9 +68,11 @@ export default function RootLayout({
       className={`${commissioner.variable} ${sourceSans.variable} ${plexMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
-        <SiteHeader />
-        {children}
-        <SiteFooter />
+        <CommandPaletteProvider>
+          <SiteHeader />
+          {children}
+          <SiteFooter />
+        </CommandPaletteProvider>
       </body>
     </html>
   );
