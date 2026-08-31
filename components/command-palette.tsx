@@ -15,11 +15,11 @@ import { work, projects } from "@/content/site";
 import { commandPaletteCopy } from "@/lib/command-palette-copy";
 
 const pages = [
-  { slug: "", title: "Index", href: "/" },
-  { slug: "work", title: "Work", href: "/work" },
-  { slug: "projects", title: "Projects", href: "/projects" },
-  { slug: "contact", title: "Contact", href: "/#contact" },
-];
+  { key: "index", href: "/" },
+  { key: "work", href: "/work" },
+  { key: "projects", href: "/projects" },
+  { key: "contact", href: "/#contact" },
+] as const;
 
 type CommandPaletteContextValue = {
   open: boolean;
@@ -140,22 +140,6 @@ export function CommandPaletteProvider({
                     </Command.Empty>
 
                     <Command.Group
-                      heading={commandPaletteCopy.groups.pages}
-                      className="[&_[cmdk-group-heading]]:px-3 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:font-mono [&_[cmdk-group-heading]]:text-[10px] [&_[cmdk-group-heading]]:tracking-wider [&_[cmdk-group-heading]]:text-caption [&_[cmdk-group-heading]]:uppercase"
-                    >
-                      {pages.map((page) => (
-                        <Command.Item
-                          key={page.href}
-                          value={page.title}
-                          onSelect={() => navigate(page.href)}
-                          className="flex cursor-pointer items-center gap-3 rounded-md px-3 py-2 text-stone transition-colors data-[selected=true]:bg-copper/10"
-                        >
-                          <span className="font-sans text-sm">{page.title}</span>
-                        </Command.Item>
-                      ))}
-                    </Command.Group>
-
-                    <Command.Group
                       heading={commandPaletteCopy.groups.work}
                       className="[&_[cmdk-group-heading]]:px-3 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:font-mono [&_[cmdk-group-heading]]:text-[10px] [&_[cmdk-group-heading]]:tracking-wider [&_[cmdk-group-heading]]:text-caption [&_[cmdk-group-heading]]:uppercase"
                     >
@@ -192,11 +176,29 @@ export function CommandPaletteProvider({
                         </Command.Item>
                       ))}
                     </Command.Group>
+
+                    <Command.Group
+                      heading={commandPaletteCopy.groups.pages}
+                      className="[&_[cmdk-group-heading]]:px-3 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:font-mono [&_[cmdk-group-heading]]:text-[10px] [&_[cmdk-group-heading]]:tracking-wider [&_[cmdk-group-heading]]:text-caption [&_[cmdk-group-heading]]:uppercase"
+                    >
+                      {pages.map((page) => {
+                        const label = commandPaletteCopy.pageLabels[page.key];
+                        return (
+                          <Command.Item
+                            key={page.href}
+                            value={label}
+                            onSelect={() => navigate(page.href)}
+                            className="flex cursor-pointer items-center gap-3 rounded-md px-3 py-2 text-stone transition-colors data-[selected=true]:bg-copper/10"
+                          >
+                            <span className="font-sans text-sm">{label}</span>
+                          </Command.Item>
+                        );
+                      })}
+                    </Command.Group>
                   </Command.List>
 
-                  <div className="flex items-center justify-end gap-3 border-t border-rule px-4 py-2 font-mono text-[10px] tracking-wider text-caption uppercase">
-                    <span>{commandPaletteCopy.footerHint.select}</span>
-                    <span>{commandPaletteCopy.footerHint.close}</span>
+                  <div className="border-t border-rule px-4 py-2 font-mono text-[10px] tracking-wider text-caption">
+                    {commandPaletteCopy.footer}
                   </div>
                 </Command>
               </motion.div>

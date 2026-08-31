@@ -1,16 +1,19 @@
 /**
- * Chrome copy for command palette — swap these strings for final voice.
+ * Chrome copy for command palette — source of truth for all UI strings.
  */
 export const commandPaletteCopy = {
-  placeholder: "Go to",
+  placeholder: "Go to…",
   groups: {
-    pages: "Pages",
     work: "Work",
     projects: "Projects",
+    pages: "Pages",
   },
   empty: "Nothing.",
-  footerHint: {
-    select: "↵",
-    close: "esc",
+  footer: "↵ to go · esc",
+  pageLabels: {
+    index: "Index",
+    work: "Work",
+    projects: "Projects",
+    contact: "Contact",
   },
 } as const;
