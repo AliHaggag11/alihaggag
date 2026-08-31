@@ -178,6 +178,47 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "daleeli",
+    title: "Daleeli",
+    tagline: "Your business, in one clear system.",
+    excerpt:
+      "Commerce OS for Egyptian merchants: storefront, bookings, Paymob, shipping, and ops in one workspace.",
+    problem:
+      "Egyptian businesses still split selling, bookings, payments, and shipping across tools that were not built for local rails (Paymob, Bosta, ShipBlu) or Arabic-first storefronts.",
+    built: [
+      "Merchant dashboard and public storefront renderer with workspace archetypes (seller, service, creator, F&B).",
+      "Paymob checkout with idempotent transactions and webhook verification.",
+      "Bosta and ShipBlu shipping adapters with carrier-agnostic interface.",
+      "Transactional outbox and immutable publish model for reliable state sync.",
+      "Multi-tenant architecture with Postgres row-level security.",
+    ],
+    architecture:
+      "Next.js app (dashboard + renderer) on Postgres tenancy with RLS, Redis and BullMQ workers, typed REST under /api/v1, payment and carrier adapter boundaries, transactional outbox for reliable publish.",
+    stack: ["Next.js", "TypeScript", "PostgreSQL", "Redis", "BullMQ", "Paymob"],
+    github: null,
+    liveUrl: null,
+  },
+  {
+    slug: "eaip",
+    title: "EAIP",
+    tagline: "On-prem corporate AI platform.",
+    excerpt:
+      "Private AI behind the company's own auth, not a SaaS chatbot. Gateway, portal, and a data-science worker that stay on-prem.",
+    problem:
+      "Organizations need LLM capability inside their network and identity (LDAP, JWT), not another cloud chatbot with external tenancy.",
+    built: [
+      "Corporate portal with login, launcher, dashboard, and admin views.",
+      "Spring Cloud API gateway with JWT routing.",
+      "Auth and authorization backend with LDAP integration.",
+      "Department data-science worker with Spring AI for LLM inference.",
+    ],
+    architecture:
+      "Next.js portal calls a Spring Cloud Gateway; gateway fronts Spring Boot auth and a Spring AI worker; two Postgres databases (auth vs data-science); Docker Compose for on-prem deploy.",
+    stack: ["Java 21", "Spring Boot", "Spring Cloud Gateway", "Next.js", "PostgreSQL", "Spring AI"],
+    github: null,
+    liveUrl: null,
+  },
+  {
     slug: "verdict",
     title: "Verdict",
     tagline: "Decide before you build.",
