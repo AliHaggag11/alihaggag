@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --ink: #f8f6f3;
-  --stone: #3d4248;
+  --ink: #f5f0e8;
+  --stone: #2e3430;
   --paper: #1a1e22;
-  --copper: #2d6355;
-  --gold: #9a7b4a;
-  --caption: #6b7075;
+  --copper: #3d7a6a;
+  --gold: #a07c42;
+  --caption: #6a6f68;
   --rule: color-mix(in srgb, var(--stone) 18%, transparent);
-  --surface: #f8f6f3;
-  --surface-gradient: color-mix(in srgb, var(--copper) 5%, transparent);
-  --header-bg: rgba(248, 246, 243, 0.85);
+  --surface: #f5f0e8;
+  --surface-gradient: color-mix(in srgb, var(--copper) 9%, transparent);
+  --header-bg: rgba(245, 240, 232, 0.88);
 }
 
 @media (prefers-color-scheme: dark) {
