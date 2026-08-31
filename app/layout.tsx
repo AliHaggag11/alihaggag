@@ -27,7 +27,7 @@ const plexMono = IBM_Plex_Mono({
 export const viewport: Viewport = {
   colorScheme: "light dark",
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f8f6f3" },
+    { media: "(prefers-color-scheme: light)", color: "#f5f0e8" },
     { media: "(prefers-color-scheme: dark)", color: "#0e1418" },
   ],
 };
