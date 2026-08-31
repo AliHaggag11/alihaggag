@@ -6,7 +6,7 @@ import { projects } from "@/content/site";
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "Shipped products — Verdict, TasteOS, and Opero.",
+    "Shipped products — Daleeli, EAIP, Verdict, TasteOS, and Opero.",
 };
 
 export default function ProjectsPage() {
