@@ -6,7 +6,7 @@ import { projects } from "@/content/site";
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "Shipped products: Verdict, TasteOS, and JetSet — original tools built from scratch.",
+    "Shipped products — Verdict, TasteOS, and Opero.",
 };
 
 export default function ProjectsPage() {
@@ -19,7 +19,7 @@ export default function ProjectsPage() {
         Projects
       </h1>
       <p className="mt-4 max-w-xl text-lg text-stone/80">
-        Original products I designed and built — not tutorials, not templates.
+        Shipped products, not job case studies.
       </p>
       <div className="mt-10">
         <TitleBlock sheet="03 / Projects" project="Shipped products" />
@@ -29,7 +29,7 @@ export default function ProjectsPage() {
           <li key={item.slug}>
             <Link
               href={`/projects/${item.slug}`}
-              className="group grid gap-3 border-b border-stone/15 py-8 first:border-t md:grid-cols-[4rem_1fr_auto] md:items-start"
+              className="group grid gap-3 border-b border-stone/15 py-8 first:border-t md:grid-cols-[4rem_1fr] md:items-start"
             >
               <span className="font-mono text-[11px] text-caption">
                 {String(index + 1).padStart(2, "0")}
@@ -38,15 +38,12 @@ export default function ProjectsPage() {
                 <span className="block font-[family-name:var(--font-commissioner)] text-3xl tracking-[-0.03em] text-paper group-hover:text-gold">
                   {item.title}
                 </span>
-                <span className="mt-1 block font-mono text-[11px] tracking-[0.12em] text-copper uppercase">
+                <span className="mt-2 block font-mono text-[11px] tracking-[0.12em] text-copper uppercase">
                   {item.tagline}
                 </span>
                 <span className="mt-3 block max-w-xl text-stone/80">
                   {item.excerpt}
                 </span>
-              </span>
-              <span className="font-mono text-[11px] tracking-[0.06em] text-gold md:text-right">
-                {item.stack.slice(0, 3).join(" · ")}
               </span>
             </Link>
           </li>

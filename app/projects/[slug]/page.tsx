@@ -18,7 +18,7 @@ export async function generateMetadata({
   if (!item) return {};
   return {
     title: item.title,
-    description: `${item.tagline} ${item.excerpt}`,
+    description: item.excerpt,
   };
 }
 
@@ -48,6 +48,7 @@ export default async function ProjectDetailPage({
       <h1 className="mt-4 max-w-3xl font-[family-name:var(--font-commissioner)] text-5xl tracking-[-0.04em] text-paper sm:text-6xl">
         {item.title}
       </h1>
+      <p className="mt-4 text-lg text-stone/80">{item.excerpt}</p>
       <div className="mt-10">
         <TitleBlock
           sheet={`03 / ${String(index + 1).padStart(2, "0")}`}
@@ -56,10 +57,30 @@ export default async function ProjectDetailPage({
       </div>
       <section className="mt-14 grid gap-10 lg:grid-cols-[200px_1fr]">
         <h2 className="font-mono text-[11px] tracking-[0.2em] text-caption uppercase">
-          What it does
+          Context
         </h2>
         <p className="max-w-2xl text-lg leading-relaxed text-stone/90">
-          {item.excerpt}
+          {item.problem}
+        </p>
+      </section>
+      <section className="mt-14 grid gap-10 border-t border-stone/15 pt-10 lg:grid-cols-[200px_1fr]">
+        <h2 className="font-mono text-[11px] tracking-[0.2em] text-caption uppercase">
+          What I built
+        </h2>
+        <ul className="max-w-2xl space-y-4 text-lg leading-relaxed text-stone/90">
+          {item.built.map((line) => (
+            <li key={line} className="border-l border-copper/50 pl-4">
+              {line}
+            </li>
+          ))}
+        </ul>
+      </section>
+      <section className="mt-14 grid gap-10 border-t border-stone/15 pt-10 lg:grid-cols-[200px_1fr]">
+        <h2 className="font-mono text-[11px] tracking-[0.2em] text-caption uppercase">
+          Architecture
+        </h2>
+        <p className="max-w-2xl text-lg leading-relaxed text-stone/90">
+          {item.architecture}
         </p>
       </section>
       <section className="mt-14 grid gap-10 border-t border-stone/15 pt-10 lg:grid-cols-[200px_1fr]">
@@ -70,31 +91,21 @@ export default async function ProjectDetailPage({
           {item.stack.join(" · ")}
         </p>
       </section>
-      <section className="mt-14 grid gap-10 border-t border-stone/15 pt-10 lg:grid-cols-[200px_1fr]">
-        <h2 className="font-mono text-[11px] tracking-[0.2em] text-caption uppercase">
-          Links
-        </h2>
-        <div className="flex flex-wrap gap-x-8 gap-y-3 font-mono text-sm tracking-[0.08em]">
+      {item.github && (
+        <section className="mt-14 grid gap-10 border-t border-stone/15 pt-10 lg:grid-cols-[200px_1fr]">
+          <h2 className="font-mono text-[11px] tracking-[0.2em] text-caption uppercase">
+            Source
+          </h2>
           <Link
             href={item.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gold hover:text-paper"
+            className="font-mono text-sm tracking-[0.06em] text-gold hover:text-paper"
           >
-            GitHub →
+            View on GitHub →
           </Link>
-          {item.liveUrl ? (
-            <Link
-              href={item.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gold hover:text-paper"
-            >
-              Live demo →
-            </Link>
-          ) : null}
-        </div>
-      </section>
+        </section>
+      )}
       <div className="mt-20 border-t border-stone/15 pt-8">
         <Link
           href={`/projects/${next.slug}`}

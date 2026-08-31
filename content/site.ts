@@ -14,7 +14,7 @@ export const site = {
 export const about = {
   lead: "I work at the intersection of mission-critical fintech, scalable platform engineering, and enterprise AI.",
   body: [
-    "At Egyptian Banks Company I contribute to InstaPay, Egypt’s leading instant payment platform — helping build and evolve secure, highly available systems used by millions of customers. The work covers Spring Boot microservices, PostgreSQL performance, API design, caching, reliability, and scalable backend architecture.",
+    "At Egyptian Banks Company I contribute to InstaPay, Egypt's leading instant payment platform — helping build and evolve secure, highly available systems used by millions of customers. The work covers Spring Boot microservices, PostgreSQL performance, API design, caching, reliability, and scalable backend architecture.",
     "The interesting part is not only shipping features. It is understanding the larger system: how services interact, where bottlenecks appear, how technical decisions affect operations, and how business requirements become architecture that can be maintained.",
     "I am also focused on enterprise AI — the practical adoption of large language models inside organizations. That includes platform architecture, retrieval-augmented generation and document intelligence, AI-assisted engineering workflows, agentic systems and tool orchestration, local privacy-first LLM deployment, and the governance required to adopt AI safely.",
   ],
@@ -32,7 +32,7 @@ export const experience = [
     place: "Egypt · On-site",
     current: true,
     summary:
-      "Contributing to InstaPay: Spring Boot microservices, PostgreSQL, APIs, caching, and reliability for Egypt’s instant payments platform.",
+      "Contributing to InstaPay: Spring Boot microservices, PostgreSQL, APIs, caching, and reliability for Egypt's instant payments platform.",
   },
   {
     slug: "upscale-da",
@@ -70,7 +70,7 @@ export const work = [
     problem:
       "Instant payments have to clear correctly, stay available, and remain secure under national-scale load. There is little room for architecture that only works on a happy path.",
     built: [
-      "Spring Boot microservices for InstaPay, Egypt’s leading instant payment platform.",
+      "Spring Boot microservices for InstaPay, Egypt's leading instant payment platform.",
       "PostgreSQL performance work, API design, and caching as part of the reliability surface.",
       "Backend architecture that has to stay maintainable as the platform evolves.",
     ],
@@ -163,17 +163,37 @@ export const certifications = [
   },
 ];
 
-export function getWork(slug: string) {
-  return work.find((item) => item.slug === slug);
-}
+export type Project = {
+  slug: string;
+  title: string;
+  tagline: string;
+  excerpt: string;
+  problem: string;
+  built: string[];
+  architecture: string;
+  stack: string[];
+  github: string | null;
+  liveUrl: string | null;
+};
 
-export const projects = [
+export const projects: Project[] = [
   {
     slug: "verdict",
     title: "Verdict",
     tagline: "Decide before you build.",
     excerpt:
-      "An AI product manager for non-technical founders. Challenges weak ideas, flags risk, and kills bad builds early.",
+      "An AI product manager that interrogates ideas instead of validating them.",
+    problem:
+      "Non-technical founders get polite AI that rubber-stamps weak ideas. They need something that disagrees, flags vague language, and kills bad builds early.",
+    built: [
+      "Idea interrogation that challenges assumptions instead of confirming them.",
+      "Competitor mapping and differentiation analysis.",
+      "PRD generation, interview scripts, and transcript handling.",
+      "Cost estimation and decision history tracking.",
+      "Founder, expert, and admin views with Docker Compose for local deployment.",
+    ],
+    architecture:
+      "Next.js frontend, Express API, Prisma with PostgreSQL, Gemini 2.0 Flash, JWT access and refresh tokens. Prompting is opinionated: disagree when the idea is weak, score untested ideas honestly, prefer a no over a maybe.",
     stack: ["Next.js", "TypeScript", "Express", "PostgreSQL", "Prisma", "Gemini"],
     github: "https://github.com/AliHaggag11/verdict",
     liveUrl: null,
@@ -183,22 +203,48 @@ export const projects = [
     title: "TasteOS",
     tagline: "Smart F&B operating system.",
     excerpt:
-      "Unified platform for restaurants, cafés, and food trucks: QR menus, ordering, AI insights, loyalty, inventory, and Paymob payments for Egypt.",
+      "Multi-tenant ops for restaurants, cafés, and food trucks — menus, orders, kitchen, inventory, loyalty, and Paymob for Egypt.",
+    problem:
+      "Independent F&B shops run menus, orders, loyalty, stock, and payments as separate tools. In Egypt that also means a local payments rail, not Stripe-by-default.",
+    built: [
+      "QR menus and phone ordering with real-time kitchen display.",
+      "Inventory management and multi-branch support.",
+      "Loyalty programs and marketing tools.",
+      "Feedback wall and Gemini-powered insights and recommendations.",
+      "Paymob integration and Owner/Manager/Staff RBAC with subdomain tenancy.",
+    ],
+    architecture:
+      "Next.js App Router, Supabase for Postgres, Auth, and Realtime, Paymob for Egypt payments, Gemini for insights. Multi-tenant via subdomain routing.",
     stack: ["Next.js", "TypeScript", "Tailwind", "Supabase", "Gemini", "Paymob"],
     github: "https://github.com/AliHaggag11/tasteos",
     liveUrl: null,
   },
   {
-    slug: "jetset",
-    title: "JetSet",
-    tagline: "AI travel planner.",
+    slug: "opero",
+    title: "Opero",
+    tagline: "Agency operating system.",
     excerpt:
-      "Personalized itineraries from a multi-step trip wizard, with budget tracking and a dashboard to manage trips.",
-    stack: ["Next.js", "TypeScript", "Tailwind", "shadcn/ui", "Groq"],
-    github: "https://github.com/AliHaggag11/jetset",
+      "Clients, projects, finance, and automation in one private ops platform — closer to how a studio actually runs than a project board.",
+    problem:
+      "Agencies still run clients, projects, and money across spreadsheets and chat. The work is operational, not a kanban skin.",
+    built: [
+      "Dashboard for clients, projects, and financial tracking.",
+      "Automation workflows and intelligence features.",
+      "Support and feedback management.",
+      "Stripe integration for billing.",
+      "Browser automation and Google APIs for operational tasks.",
+    ],
+    architecture:
+      "Next.js with Drizzle and Postgres, Auth.js for authentication. Private internal tool — not a SaaS product.",
+    stack: ["Next.js", "TypeScript", "Drizzle", "PostgreSQL", "Stripe", "Auth.js"],
+    github: null,
     liveUrl: null,
   },
-] as const;
+];
+
+export function getWork(slug: string) {
+  return work.find((item) => item.slug === slug);
+}
 
 export function getProject(slug: string) {
   return projects.find((item) => item.slug === slug);
