@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Commissioner, IBM_Plex_Mono, Source_Sans_3 } from "next/font/google";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -23,6 +23,14 @@ const plexMono = IBM_Plex_Mono({
   weight: ["400", "500"],
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  colorScheme: "light dark",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f8f6f3" },
+    { media: "(prefers-color-scheme: dark)", color: "#0e1418" },
+  ],
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
