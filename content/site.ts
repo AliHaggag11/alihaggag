@@ -166,3 +166,40 @@ export const certifications = [
 export function getWork(slug: string) {
   return work.find((item) => item.slug === slug);
 }
+
+export const projects = [
+  {
+    slug: "verdict",
+    title: "Verdict",
+    tagline: "Decide before you build.",
+    excerpt:
+      "An AI product manager for non-technical founders. Challenges weak ideas, flags risk, and kills bad builds early.",
+    stack: ["Next.js", "TypeScript", "Express", "PostgreSQL", "Prisma", "Gemini"],
+    github: "https://github.com/AliHaggag11/verdict",
+    liveUrl: null,
+  },
+  {
+    slug: "tasteos",
+    title: "TasteOS",
+    tagline: "Smart F&B operating system.",
+    excerpt:
+      "Unified platform for restaurants, cafés, and food trucks: QR menus, ordering, AI insights, loyalty, inventory, and Paymob payments for Egypt.",
+    stack: ["Next.js", "TypeScript", "Tailwind", "Supabase", "Gemini", "Paymob"],
+    github: "https://github.com/AliHaggag11/tasteos",
+    liveUrl: null,
+  },
+  {
+    slug: "jetset",
+    title: "JetSet",
+    tagline: "AI travel planner.",
+    excerpt:
+      "Personalized itineraries from a multi-step trip wizard, with budget tracking and a dashboard to manage trips.",
+    stack: ["Next.js", "TypeScript", "Tailwind", "shadcn/ui", "Groq"],
+    github: "https://github.com/AliHaggag11/jetset",
+    liveUrl: null,
+  },
+] as const;
+
+export function getProject(slug: string) {
+  return projects.find((item) => item.slug === slug);
+}
