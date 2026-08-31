@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { site } from "@/content/site";
+import { useCommandPalette } from "@/components/command-palette";
 
 const links = [
   { href: "/", label: "Index" },
@@ -13,6 +14,7 @@ const links = [
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const { setOpen } = useCommandPalette();
 
   return (
     <header className="sticky top-0 z-20 border-b border-stone/15 bg-header-bg backdrop-blur-md">
@@ -39,6 +41,14 @@ export function SiteHeader() {
               </Link>
             );
           })}
+          <button
+            type="button"
+            onClick={() => setOpen(true)}
+            className="hidden transition-colors hover:text-stone sm:block"
+            aria-label="Open command palette"
+          >
+            ⌘K
+          </button>
         </nav>
       </div>
     </header>
