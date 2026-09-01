@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Folio } from "@/components/folio";
 import { Reveal } from "@/components/reveal";
 import {
   about,
@@ -25,9 +24,9 @@ export default function Home() {
         </p>
       </Reveal>
 
-      <div className="mt-12">
-        <Folio sheet="01" />
-      </div>
+      <p className="mt-10 font-mono text-[10px] tracking-[0.16em] text-caption/60 uppercase">
+        Sheet 01
+      </p>
 
       <section className="mt-16 grid gap-10 border-t border-stone/15 pt-10 lg:grid-cols-[200px_1fr] lg:gap-16">
         <Reveal>
