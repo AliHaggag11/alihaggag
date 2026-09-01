@@ -25,7 +25,7 @@ export default function Home() {
       </Reveal>
 
       <p className="mt-10 font-mono text-[10px] tracking-[0.16em] text-caption/60 uppercase">
-        Sheet 01
+        Ali Haggag  01
       </p>
 
       <section className="mt-16 grid gap-10 border-t border-stone/15 pt-10 lg:grid-cols-[200px_1fr] lg:gap-16">
