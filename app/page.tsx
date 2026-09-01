@@ -67,17 +67,17 @@ export default function Home() {
 
       <section className="mt-20 border-t border-stone/15 pt-10">
         <Reveal>
-          <ul className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="space-y-8">
             {projects.map((item) => (
               <li key={item.slug}>
                 <Link
                   href={`/projects/${item.slug}`}
                   className="group block"
                 >
-                  <span className="font-[family-name:var(--font-commissioner)] text-xl tracking-[-0.02em] text-paper transition-colors duration-150 group-hover:text-gold">
+                  <span className="font-[family-name:var(--font-commissioner)] text-2xl tracking-[-0.02em] text-paper transition-colors duration-150 group-hover:text-gold sm:text-3xl">
                     {item.title}
                   </span>
-                  <span className="mt-2 block text-stone/70">
+                  <span className="mt-2 block text-lg text-stone/70">
                     {item.tagline}
                   </span>
                 </Link>
@@ -123,6 +123,7 @@ export default function Home() {
                     {job.company} · {job.type}
                     {job.place ? ` · ${job.place}` : ""}
                   </p>
+                  <p className="mt-2 max-w-2xl text-stone/70">{job.summary}</p>
                 </div>
               </li>
             ))}
@@ -165,7 +166,10 @@ export default function Home() {
         className="mt-16 scroll-mt-24 border-t border-stone/15 pt-8"
       >
         <Reveal>
-          <div className="flex flex-wrap items-baseline gap-x-8 gap-y-3 font-mono text-sm tracking-[0.08em]">
+          <p className="max-w-xl text-lg text-paper">
+            Cairo. Open to conversations about fintech platforms, backend architecture, and enterprise AI.
+          </p>
+          <div className="mt-6 flex flex-wrap items-baseline gap-x-8 gap-y-3 font-mono text-sm tracking-[0.08em]">
             <Link
               href={`mailto:${site.email}`}
               className="text-gold transition-colors duration-150 hover:text-paper"

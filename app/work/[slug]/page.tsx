@@ -69,9 +69,8 @@ export default async function WorkDetailPage({
         <Reveal>
           <ul className="max-w-2xl space-y-3 text-stone/85">
             {item.built.map((line) => (
-              <li key={line} className="flex gap-3">
-                <span className="mt-1.5 text-copper">✓</span>
-                <span>{line}</span>
+              <li key={line} className="border-l border-copper/50 pl-4">
+                {line}
               </li>
             ))}
           </ul>

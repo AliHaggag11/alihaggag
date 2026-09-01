@@ -28,21 +28,18 @@ export default function ProjectsPage() {
 
       <section className="mt-14 border-t border-stone/15 pt-8">
         <Reveal>
-          <ul className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="space-y-10">
             {projects.map((item) => (
               <li key={item.slug}>
                 <Link
                   href={`/projects/${item.slug}`}
                   className="group block"
                 >
-                  <span className="font-[family-name:var(--font-commissioner)] text-2xl tracking-[-0.02em] text-paper transition-colors duration-150 group-hover:text-gold">
+                  <span className="font-[family-name:var(--font-commissioner)] text-3xl tracking-[-0.02em] text-paper transition-colors duration-150 group-hover:text-gold">
                     {item.title}
                   </span>
-                  <span className="mt-2 block text-stone/70">
+                  <span className="mt-2 block text-lg text-stone/70">
                     {item.tagline}
-                  </span>
-                  <span className="mt-3 block text-sm text-stone/60">
-                    {item.excerpt}
                   </span>
                 </Link>
               </li>

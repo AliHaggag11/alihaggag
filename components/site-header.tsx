@@ -17,19 +17,14 @@ export function SiteHeader() {
   const { setOpen } = useCommandPalette();
 
   return (
-    <header className="sticky top-0 z-20 border-b border-stone/15 bg-header-bg backdrop-blur-md">
+    <header className="sticky top-0 z-20 border-b border-stone/15 bg-surface">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4 sm:px-8">
-        <div className="flex items-baseline gap-4">
-          <Link
-            href="/"
-            className="font-mono text-[11px] tracking-[0.18em] text-stone uppercase"
-          >
-            {site.name}
-          </Link>
-          <span className="hidden font-mono text-[10px] tracking-[0.14em] text-caption uppercase sm:inline">
-            Cairo · {site.role}
-          </span>
-        </div>
+        <Link
+          href="/"
+          className="font-mono text-[11px] tracking-[0.18em] text-stone uppercase"
+        >
+          {site.name}
+        </Link>
         <nav className="flex items-center gap-4 font-mono text-[11px] tracking-[0.14em] uppercase text-caption sm:gap-5">
           {links.map((link) => {
             const active =
