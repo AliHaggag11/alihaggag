@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { TitleBlock } from "@/components/title-block";
+import { Folio } from "@/components/folio";
+import { Reveal } from "@/components/reveal";
 import { getWork, work } from "@/content/site";
 
 export function generateStaticParams() {
@@ -32,57 +33,58 @@ export default async function WorkDetailPage({
   if (!item) notFound();
 
   const index = work.findIndex((entry) => entry.slug === item.slug);
+  const sheetNum = String(index + 2).padStart(2, "0");
   const next = work[(index + 1) % work.length];
 
   return (
     <main className="mx-auto w-full max-w-6xl flex-1 px-5 py-10 sm:px-8 sm:py-14">
-      <Link
-        href="/work"
-        className="font-mono text-[11px] tracking-[0.16em] text-caption uppercase hover:text-stone"
-      >
-        ← Work
-      </Link>
-      <p className="mt-8 font-mono text-[11px] tracking-[0.18em] text-copper uppercase">
-        {item.client} · {item.years}
-      </p>
-      <h1 className="mt-4 max-w-3xl font-[family-name:var(--font-commissioner)] text-5xl tracking-[-0.04em] text-paper sm:text-6xl">
-        {item.title}
-      </h1>
-      <p className="mt-4 text-lg text-stone/80">{item.role}</p>
-      <div className="mt-10">
-        <TitleBlock
-          sheet={`03 / ${String(index + 1).padStart(2, "0")}`}
-          project={item.title}
-        />
-      </div>
-      <section className="mt-14 grid gap-10 lg:grid-cols-[200px_1fr]">
-        <h2 className="font-mono text-[11px] tracking-[0.2em] text-caption uppercase">
-          Context
-        </h2>
-        <p className="max-w-2xl text-lg leading-relaxed text-stone/90">
-          {item.problem}
+      <Folio sheet={sheetNum} />
+
+      <Reveal>
+        <Link
+          href="/work"
+          className="mt-8 inline-block font-mono text-[11px] tracking-[0.16em] text-caption uppercase transition-colors duration-150 hover:text-stone"
+        >
+          ← Work
+        </Link>
+
+        <h1 className="mt-8 max-w-3xl font-[family-name:var(--font-commissioner)] text-[clamp(2.4rem,6vw,4rem)] leading-[0.95] font-semibold tracking-[-0.04em] text-paper">
+          {item.title}
+        </h1>
+
+        <p className="mt-6 font-mono text-sm tracking-[0.08em] text-copper">
+          {item.client} · {item.years}
         </p>
+      </Reveal>
+
+      <section className="mt-14 border-t border-stone/15 pt-8">
+        <Reveal>
+          <p className="max-w-2xl text-lg leading-relaxed text-stone/85">
+            {item.problem}
+          </p>
+        </Reveal>
       </section>
-      <section className="mt-14 grid gap-10 border-t border-stone/15 pt-10 lg:grid-cols-[200px_1fr]">
-        <h2 className="font-mono text-[11px] tracking-[0.2em] text-caption uppercase">
-          What I work on
-        </h2>
-        <ul className="max-w-2xl space-y-4 text-lg leading-relaxed text-stone/90">
-          {item.built.map((line) => (
-            <li key={line} className="border-l border-copper/50 pl-4">
-              {line}
-            </li>
-          ))}
-        </ul>
+
+      <section className="mt-12 border-t border-stone/15 pt-8">
+        <Reveal>
+          <ul className="max-w-2xl space-y-3 text-stone/85">
+            {item.built.map((line) => (
+              <li key={line} className="border-l border-copper/50 pl-4">
+                {line}
+              </li>
+            ))}
+          </ul>
+        </Reveal>
       </section>
-      <section className="mt-14 grid gap-10 border-t border-stone/15 pt-10 lg:grid-cols-[200px_1fr]">
-        <h2 className="font-mono text-[11px] tracking-[0.2em] text-caption uppercase">
-          Stack
-        </h2>
-        <p className="font-mono text-sm tracking-[0.06em] text-gold">
-          {item.stack.join(" · ")}
-        </p>
+
+      <section className="mt-12 border-t border-stone/15 pt-8">
+        <Reveal>
+          <p className="font-mono text-sm tracking-[0.06em] text-stone/70">
+            {item.stack.join(" · ")}
+          </p>
+        </Reveal>
       </section>
+
       <div className="mt-20 border-t border-stone/15 pt-8">
         <Link
           href={`/work/${next.slug}`}
@@ -91,7 +93,7 @@ export default async function WorkDetailPage({
           <span className="font-mono text-[11px] tracking-[0.16em] text-caption uppercase">
             Next
           </span>
-          <span className="font-[family-name:var(--font-commissioner)] text-2xl tracking-[-0.03em] text-paper group-hover:text-gold">
+          <span className="font-[family-name:var(--font-commissioner)] text-2xl tracking-[-0.03em] text-paper transition-colors duration-150 group-hover:text-gold">
             {next.title} →
           </span>
         </Link>

@@ -14,6 +14,7 @@ export const commandPaletteCopy = {
     index: "Index",
     work: "Work",
     projects: "Projects",
+    cv: "CV",
     contact: "Contact",
   },
 } as const;
