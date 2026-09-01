@@ -161,6 +161,26 @@ export default function Home() {
         </Reveal>
       </section>
 
+      <section className="mt-16 border-t border-copper/30 pt-8">
+        <Reveal>
+          <div className="grid grid-cols-2 border border-stone/20 font-mono text-[11px] tracking-[0.16em] uppercase">
+            <Link
+              href="/cv"
+              className="border-r border-stone/15 px-4 py-4 text-center text-stone transition-colors duration-150 hover:text-gold focus:text-gold"
+            >
+              Preview
+            </Link>
+            <Link
+              href="/Ali-Haggag-CV.pdf"
+              download
+              className="px-4 py-4 text-center text-stone transition-colors duration-150 hover:text-gold focus:text-gold"
+            >
+              Download
+            </Link>
+          </div>
+        </Reveal>
+      </section>
+
       <section
         id="contact"
         className="mt-16 scroll-mt-24 border-t border-stone/15 pt-8"
@@ -187,13 +207,6 @@ export default function Home() {
               className="text-stone/70 transition-colors duration-150 hover:text-stone"
             >
               GitHub
-            </Link>
-            <Link
-              href="/Ali-Haggag-CV.pdf"
-              download
-              className="text-stone/70 transition-colors duration-150 hover:text-stone"
-            >
-              Download
             </Link>
           </div>
         </Reveal>
