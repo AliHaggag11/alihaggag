@@ -17,15 +17,12 @@ export function SiteHeader() {
   const { setOpen } = useCommandPalette();
 
   return (
-    <header className="sticky top-0 z-20 border-b border-stone/15 bg-header-bg backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-4 sm:px-8">
-        <Link
-          href="/"
-          className="font-mono text-[11px] tracking-[0.22em] text-stone uppercase"
-        >
+    <header className="sticky top-0 z-20 border-b border-rule bg-header-bg backdrop-blur-md">
+      <div className="mx-auto flex max-w-2xl items-center justify-between gap-4 px-5 py-4 sm:px-8">
+        <Link href="/" className="font-mono text-xs text-stone">
           {site.name}
         </Link>
-        <nav className="flex items-center gap-5 font-mono text-[11px] tracking-[0.16em] uppercase text-caption">
+        <nav className="flex items-center gap-4 font-mono text-xs text-caption">
           {links.map((link) => {
             const active =
               link.href === "/"
@@ -35,7 +32,7 @@ export function SiteHeader() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`transition-colors hover:text-stone ${active ? "text-stone" : ""}`}
+                className={`transition-colors duration-150 hover:text-stone ${active ? "text-stone" : ""}`}
               >
                 {link.label}
               </Link>
@@ -44,7 +41,7 @@ export function SiteHeader() {
           <button
             type="button"
             onClick={() => setOpen(true)}
-            className="hidden transition-colors hover:text-stone sm:block"
+            className="transition-colors duration-150 hover:text-stone"
             aria-label="Open command palette"
           >
             ⌘K
