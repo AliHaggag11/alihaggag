@@ -188,6 +188,13 @@ export default function Home() {
             >
               GitHub
             </Link>
+            <Link
+              href="/Ali-Haggag-CV.pdf"
+              download
+              className="text-stone/70 transition-colors duration-150 hover:text-stone"
+            >
+              Download
+            </Link>
           </div>
         </Reveal>
       </section>

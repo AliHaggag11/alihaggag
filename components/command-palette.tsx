@@ -18,6 +18,7 @@ const pages = [
   { key: "index", href: "/" },
   { key: "work", href: "/work" },
   { key: "projects", href: "/projects" },
+  { key: "cv", href: "/cv" },
   { key: "contact", href: "/#contact" },
 ] as const;
 
