@@ -109,19 +109,19 @@ export function CommandPaletteProvider({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.15 }}
-              className="absolute inset-0 bg-ink/60 backdrop-blur-sm"
+              className="absolute inset-0 bg-ink/40"
               onClick={() => setOpen(false)}
             />
-            <div className="absolute inset-0 flex items-start justify-center pt-[15vh]">
+            <div className="absolute inset-x-0 top-[60px] flex justify-center px-5 sm:px-8">
               <motion.div
-                initial={{ opacity: 0, scale: 0.96, y: -8 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.96, y: -8 }}
-                transition={{ duration: 0.15, ease: "easeOut" }}
-                className="relative w-full max-w-md mx-4"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.15 }}
+                className="w-full max-w-6xl"
               >
                 <Command
-                  className="rounded-lg border border-rule bg-surface shadow-2xl overflow-hidden"
+                  className="border-b border-stone/15 bg-surface"
                   loop
                   onKeyDown={(e) => {
                     if (e.key === "Escape") {
@@ -132,27 +132,29 @@ export function CommandPaletteProvider({
                   <Command.Input
                     ref={inputRef}
                     placeholder={commandPaletteCopy.placeholder}
-                    className="w-full border-b border-rule bg-transparent px-4 py-3 font-mono text-sm text-stone placeholder:text-caption outline-none"
+                    className="w-full border-b border-stone/15 bg-transparent py-4 font-mono text-sm text-stone placeholder:text-caption outline-none"
                   />
-                  <Command.List className="max-h-72 overflow-y-auto p-2">
-                    <Command.Empty className="px-4 py-8 text-center font-mono text-sm text-caption">
+                  <Command.List className="max-h-[60vh] overflow-y-auto py-4">
+                    <Command.Empty className="py-8 text-center font-mono text-sm text-caption">
                       {commandPaletteCopy.empty}
                     </Command.Empty>
 
                     <Command.Group
                       heading={commandPaletteCopy.groups.work}
-                      className="[&_[cmdk-group-heading]]:px-3 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:font-mono [&_[cmdk-group-heading]]:text-[10px] [&_[cmdk-group-heading]]:tracking-wider [&_[cmdk-group-heading]]:text-caption [&_[cmdk-group-heading]]:uppercase"
+                      className="[&_[cmdk-group-heading]]:pb-2 [&_[cmdk-group-heading]]:font-mono [&_[cmdk-group-heading]]:text-[10px] [&_[cmdk-group-heading]]:tracking-[0.16em] [&_[cmdk-group-heading]]:text-caption"
                     >
                       {work.map((item) => (
                         <Command.Item
                           key={item.slug}
                           value={item.title}
                           onSelect={() => navigate(`/work/${item.slug}`)}
-                          className="flex cursor-pointer flex-col gap-0.5 rounded-md px-3 py-2 text-stone transition-colors data-[selected=true]:bg-copper/10"
+                          className="group flex cursor-pointer items-baseline gap-3 py-2 text-stone/70 transition-colors duration-150 data-[selected=true]:text-stone"
                         >
-                          <span className="font-sans text-sm">{item.title}</span>
-                          <span className="font-sans text-xs text-caption">
-                            {item.client}
+                          <span className="text-gold opacity-0 transition-opacity duration-150 group-data-[selected=true]:opacity-100">
+                            ▸
+                          </span>
+                          <span className="font-[family-name:var(--font-commissioner)] text-lg tracking-[-0.02em] transition-colors duration-150 group-data-[selected=true]:text-paper">
+                            {item.title}
                           </span>
                         </Command.Item>
                       ))}
@@ -160,18 +162,20 @@ export function CommandPaletteProvider({
 
                     <Command.Group
                       heading={commandPaletteCopy.groups.projects}
-                      className="[&_[cmdk-group-heading]]:px-3 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:font-mono [&_[cmdk-group-heading]]:text-[10px] [&_[cmdk-group-heading]]:tracking-wider [&_[cmdk-group-heading]]:text-caption [&_[cmdk-group-heading]]:uppercase"
+                      className="mt-6 [&_[cmdk-group-heading]]:pb-2 [&_[cmdk-group-heading]]:font-mono [&_[cmdk-group-heading]]:text-[10px] [&_[cmdk-group-heading]]:tracking-[0.16em] [&_[cmdk-group-heading]]:text-caption"
                     >
                       {projects.map((item) => (
                         <Command.Item
                           key={item.slug}
                           value={item.title}
                           onSelect={() => navigate(`/projects/${item.slug}`)}
-                          className="flex cursor-pointer flex-col gap-0.5 rounded-md px-3 py-2 text-stone transition-colors data-[selected=true]:bg-copper/10"
+                          className="group flex cursor-pointer items-baseline gap-3 py-2 text-stone/70 transition-colors duration-150 data-[selected=true]:text-stone"
                         >
-                          <span className="font-sans text-sm">{item.title}</span>
-                          <span className="font-sans text-xs text-caption">
-                            {item.tagline}
+                          <span className="text-gold opacity-0 transition-opacity duration-150 group-data-[selected=true]:opacity-100">
+                            ▸
+                          </span>
+                          <span className="font-[family-name:var(--font-commissioner)] text-lg tracking-[-0.02em] transition-colors duration-150 group-data-[selected=true]:text-paper">
+                            {item.title}
                           </span>
                         </Command.Item>
                       ))}
@@ -179,7 +183,7 @@ export function CommandPaletteProvider({
 
                     <Command.Group
                       heading={commandPaletteCopy.groups.pages}
-                      className="[&_[cmdk-group-heading]]:px-3 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:font-mono [&_[cmdk-group-heading]]:text-[10px] [&_[cmdk-group-heading]]:tracking-wider [&_[cmdk-group-heading]]:text-caption [&_[cmdk-group-heading]]:uppercase"
+                      className="mt-6 [&_[cmdk-group-heading]]:pb-2 [&_[cmdk-group-heading]]:font-mono [&_[cmdk-group-heading]]:text-[10px] [&_[cmdk-group-heading]]:tracking-[0.16em] [&_[cmdk-group-heading]]:text-caption"
                     >
                       {pages.map((page) => {
                         const label = commandPaletteCopy.pageLabels[page.key];
@@ -188,16 +192,21 @@ export function CommandPaletteProvider({
                             key={page.href}
                             value={label}
                             onSelect={() => navigate(page.href)}
-                            className="flex cursor-pointer items-center gap-3 rounded-md px-3 py-2 text-stone transition-colors data-[selected=true]:bg-copper/10"
+                            className="group flex cursor-pointer items-baseline gap-3 py-2 text-stone/70 transition-colors duration-150 data-[selected=true]:text-stone"
                           >
-                            <span className="font-sans text-sm">{label}</span>
+                            <span className="text-gold opacity-0 transition-opacity duration-150 group-data-[selected=true]:opacity-100">
+                              ▸
+                            </span>
+                            <span className="font-[family-name:var(--font-commissioner)] text-lg tracking-[-0.02em] transition-colors duration-150 group-data-[selected=true]:text-paper">
+                              {label}
+                            </span>
                           </Command.Item>
                         );
                       })}
                     </Command.Group>
                   </Command.List>
 
-                  <div className="border-t border-rule px-4 py-2 font-mono text-[10px] tracking-wider text-caption">
+                  <div className="border-t border-stone/15 py-3 font-mono text-[10px] tracking-[0.12em] text-caption">
                     {commandPaletteCopy.footer}
                   </div>
                 </Command>
