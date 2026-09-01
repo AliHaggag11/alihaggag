@@ -5,11 +5,9 @@ import type { ReactNode } from "react";
 
 export function Reveal({
   children,
-  delay = 0,
   className,
 }: {
   children: ReactNode;
-  delay?: number;
   className?: string;
 }) {
   const reduced = useReducedMotion();
@@ -17,10 +15,10 @@ export function Reveal({
   return (
     <motion.div
       className={className}
-      initial={reduced ? false : { opacity: 0, y: 12 }}
-      whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
+      initial={reduced ? false : { opacity: 0 }}
+      whileInView={reduced ? undefined : { opacity: 1 }}
       viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.15 }}
     >
       {children}
     </motion.div>

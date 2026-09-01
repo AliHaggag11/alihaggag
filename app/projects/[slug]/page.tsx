@@ -67,11 +67,9 @@ export default async function ProjectDetailPage({
         <h2 className="font-mono text-[11px] tracking-[0.2em] text-caption uppercase">
           What I built
         </h2>
-        <ul className="max-w-2xl space-y-4 text-lg leading-relaxed text-stone/90">
+        <ul className="max-w-2xl space-y-3 text-lg leading-relaxed text-stone/90">
           {item.built.map((line) => (
-            <li key={line} className="border-l border-copper/50 pl-4">
-              {line}
-            </li>
+            <li key={line}>{line}</li>
           ))}
         </ul>
       </section>
@@ -79,9 +77,13 @@ export default async function ProjectDetailPage({
         <h2 className="font-mono text-[11px] tracking-[0.2em] text-caption uppercase">
           Architecture
         </h2>
-        <p className="max-w-2xl text-lg leading-relaxed text-stone/90">
-          {item.architecture}
-        </p>
+        <div className="max-w-2xl">
+          <div className="border-t border-copper/40 pt-3">
+            <p className="font-mono text-sm leading-relaxed text-stone/80">
+              {item.architecture}
+            </p>
+          </div>
+        </div>
       </section>
       <section className="mt-14 grid gap-10 border-t border-stone/15 pt-10 lg:grid-cols-[200px_1fr]">
         <h2 className="font-mono text-[11px] tracking-[0.2em] text-caption uppercase">

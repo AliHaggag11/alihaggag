@@ -67,11 +67,9 @@ export default async function WorkDetailPage({
         <h2 className="font-mono text-[11px] tracking-[0.2em] text-caption uppercase">
           What I work on
         </h2>
-        <ul className="max-w-2xl space-y-4 text-lg leading-relaxed text-stone/90">
+        <ul className="max-w-2xl space-y-3 text-lg leading-relaxed text-stone/90">
           {item.built.map((line) => (
-            <li key={line} className="border-l border-copper/50 pl-4">
-              {line}
-            </li>
+            <li key={line}>{line}</li>
           ))}
         </ul>
       </section>
