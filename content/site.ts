@@ -11,6 +11,20 @@ export const site = {
   github: "https://github.com/AliHaggag11",
 };
 
+export const fiverr = {
+  profile: "https://www.fiverr.com/alihaggag1",
+  gigs: [
+    {
+      label: "Postgres performance",
+      url: "https://www.fiverr.com/alihaggag1/fix-slow-postgresql-queries-and-improve-backend-performance",
+    },
+    {
+      label: "AI agent integration",
+      url: "https://www.fiverr.com/alihaggag1/integrate-an-ai-agent-into-your-crm-billing-or-internal-apis",
+    },
+  ],
+};
+
 export const about = {
   lead: "I work at the intersection of mission-critical fintech, scalable platform engineering, and enterprise AI.",
   body: [

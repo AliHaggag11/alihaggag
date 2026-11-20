@@ -4,6 +4,7 @@ import {
   about,
   certifications,
   experience,
+  fiverr,
   site,
   stack,
   work,
@@ -213,6 +214,32 @@ export default function Home() {
             <Link href={site.github} className="hover:text-paper">
               GitHub
             </Link>
+          </div>
+          <div className="mt-6">
+            <p className="font-mono text-[11px] tracking-[0.16em] text-caption/60 uppercase">
+              Hire me on Fiverr
+            </p>
+            <div className="mt-3 flex flex-wrap gap-x-8 gap-y-3 font-mono text-sm tracking-[0.08em]">
+              {fiverr.gigs.map((gig) => (
+                <Link
+                  key={gig.label}
+                  href={gig.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-paper"
+                >
+                  {gig.label}
+                </Link>
+              ))}
+              <Link
+                href={fiverr.profile}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-paper"
+              >
+                Profile
+              </Link>
+            </div>
           </div>
         </div>
       </section>
